@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8">
+            <h1>{{ house.title }}</h1>
+            <p><strong>📍 Address:</strong> {{ house.address }}</p>
+            <p><strong>💰 Rent:</strong> ${{ house.rent }}</p>
+            <p><strong>🏢 Owner:</strong> {{ house.owner.name }}</p>
+            {% if house.availability %}
+                <div class="alert alert-success">
+                    <strong>✅ Available</strong> — You can apply now!
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <strong>⚠️ Not Available</strong> — Check back later.
+                </div>
+            {% endif %}
+        </div>
+        <div class="col-md-4">
+            {% if house.image %}
+                <img src="{{ house.image.url }}" class="img-fluid rounded" alt="{{ house.title }}">
+            {% else %}
+                <div class="bg-light d-flex justify-content-center align-items-center" style="height: 200px; border-radius: 8px;">
+                    <span class="text-muted">No Image</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if user.is_authenticated and house.availability %}
+        <div class="mt-4">
+            <a href="{% url 'housing:apply_for_house' house.pk %}" class="btn btn-success btn-lg">
+                📝 Apply for This Unit
+            </a>
+        </div>
+    {% elif not user.is_authenticated %}
+        <div class="mt-4">
+            <a href="{% url 'login' %}" class="btn btn-outline-primary btn-lg">
+                🔐 Log in to Apply
+            </a>
+        </div>
+    {% endif %}
+
+    <div class="mt-4">
+        <a href="{% url 'housing:house_list' %}" class="btn btn-secondary">
+            ← Back to All Houses
+        </a>
+    </div>
+</div>
+{% endblock %}

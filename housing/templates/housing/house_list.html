@@ -1,0 +1,99 @@
+<!-- templates/housing/house_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container text-center">
+        <h1 class="display-4 fw-bold">Find Affordable Housing</h1>
+        <p class="lead">Apply for verified, income-eligible housing units. No brokers. No hidden fees.</p>
+        <a href="#houses" class="btn btn-light btn-lg mt-3">View Available Units</a>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Why Apply With Us?</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="benefit-card p-4 text-center bg-white rounded shadow-sm">
+                    <div class="fs-1 mb-3"><i class="fas fa-user-check text-success"></i></div>
+                    <h5>Verified Listings</h5>
+                    <p>All units are reviewed and approved by local housing authorities.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="benefit-card p-4 text-center bg-white rounded shadow-sm">
+                    <div class="fs-1 mb-3"><i class="fas fa-hand-holding-usd text-primary"></i></div>
+                    <h5>Income-Based Rent</h5>
+                    <p>Rent is calculated based on your verified income. No surprises.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="benefit-card p-4 text-center bg-white rounded shadow-sm">
+                    <div class="fs-1 mb-3"><i class="fas fa-shield-alt text-info"></i></div>
+                    <h5>No Brokers</h5>
+                    <p>Direct application to property owners. Zero brokerage fees.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Housing List -->
+<section class="py-5" id="houses">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Available Housing Units</h2>
+            <form method="get" class="d-flex">
+                <input type="text" name="location" value="{{ location_query }}" 
+                       class="form-control me-2" placeholder="Search location...">
+                <input type="number" name="max_rent" value="{{ max_rent }}" 
+                       class="form-control me-2" placeholder="Max rent ($)" min="0">
+                <button type="submit" class="btn btn-primary">Filter</button>
+            </form>
+        </div>
+
+        {% if houses %}
+            <div class="row g-4">
+            {% for house in houses %}
+                <div class="col-md-6 col-lg-4">
+                    <div class="house-card">
+                        {% if house.image %}
+                            <img src="{{ house.image.url }}" alt="{{ house.title }}">
+                        {% else %}
+                            <div class="bg-light d-flex justify-content-center align-items-center" style="height:180px;">
+                                <span class="text-muted">No Image</span>
+                            </div>
+                        {% endif %}
+                        <div class="p-3">
+                            <h5>{{ house.title }}</h5>
+                            <p class="text-muted small">{{ house.address|truncatewords:10 }}</p>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <span class="fw-bold text-primary">Rent: ${{ house.rent }}</span>
+                                <a href="{% url 'housing:house_detail' house.pk %}" class="btn btn-sm btn-outline-primary">
+                                    View Details
+                                </a>
+                            </div>
+                            {% if user.is_authenticated and house.availability %}
+                                <a href="{% url 'housing:apply_for_house' house.pk %}" class="btn btn-apply w-100 mt-2">
+                                    <i class="fas fa-paper-plane"></i> Apply Now
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <div class="text-center py-5">
+                <i class="fas fa-home fa-3x text-muted mb-3"></i>
+                <h4>No units match your criteria</h4>
+                <p>Try adjusting your filters or check back soon.</p>
+                <a href="{% url 'housing:house_list' %}" class="btn btn-outline-primary">Reset Filters</a>
+            </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
