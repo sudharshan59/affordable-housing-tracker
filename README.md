@@ -1,7 +1,7 @@
 🏠 Affordable Housing Tracker
 
 A Django-powered web app to help users discover affordable housing options with ease. Built for transparency, accessibility, and real-world impact.
-##![sample image](./github_rent_house.jpg)  
+![sample image](./github_rent_house.jpg)  
 
 
 ## 🔍 Features
