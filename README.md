@@ -47,7 +47,7 @@ Start the server
 
 bash
 python manage.py runserver
-Access the app Visit http://127.0.0.1:8000/ in your browser.
+
 
 🖼️ Media & Assets
 All housing images are stored in media/houses/
@@ -57,16 +57,7 @@ Static files are managed via Django’s default configuration
 🛡️ Privacy & Local Deployment
 This project is designed with local-first principles—no external APIs or cloud dependencies. Ideal for internal use or secure deployment in resource-constrained environments.
 
-📌 Project Structure
-Code
-affordable-housing-tracker/
-├── affordable_housing/       # Main Django app
-├── housing/                  # Housing listings logic
-├── media/houses/             # Uploaded images
-├── venv/                     # Virtual environment
-├── db.sqlite3                # Local database
-└── manage.py                 # Django CLI entrypoint
-👤 Author
+
 Made with ❤️ by Sudharshanmonith 🔗 GitHub Profile
 
 📬 Contributing
