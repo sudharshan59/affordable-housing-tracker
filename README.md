@@ -1,82 +1,91 @@
-div align="center">
-🌟 Affordable Housing Tracker
+# 🏠 Affordable Housing Tracker
 
-Helping communities find and monitor affordable housing opportunities in real time.
+A Django-powered web app to help users discover affordable housing options with ease. Built for transparency, accessibility, and real-world impact.
 
-🚀 Built with React, Node.js, Express, MongoDB, Mapbox
+---
 
-💡 Fast. Scalable. Open Source.
+## 🔍 Features
 
-</div>
+- 🗺️ **Interactive Listings**: Browse housing options with images and location details.
+- 📦 **SQLite Backend**: Lightweight database for quick setup and local testing.
+- 🛠️ **Admin Dashboard**: Manage listings and media through Django’s built-in admin panel.
+- 📁 **Modular Structure**: Clean separation of concerns for easy scaling and maintenance.
 
-✨ Features
+---
 
-⚡ Real-Time Listings
-Browse up-to-date affordable housing listings by location, income level, and availability.
-🔒 Secure User Accounts
-Save favorites and receive alerts with secure authentication.
-🎨 Interactive Map View
-Visualize housing options using an intuitive, filterable map powered by Mapbox.
+## 🚀 Tech Stack
 
-📸 Screenshots / Demo
-(Add GIFs, screenshots, or a live demo link here!)
+| Layer        | Tools Used                          |
+|--------------|-------------------------------------|
+| Backend      | Django, SQLite                      |
+| Frontend     | HTML, CSS (via Django templates)    |
+| Media        | Static image hosting                |
+| Environment  | Python 3.x, Virtualenv              |
 
-Example:App Screenshot
+---
 
-⚙️ Installation
+:: 🧰 Affordable Housing Tracker - Windows Setup
 
-bash
-
-
-1
-2
-3
 git clone https://github.com/sudharshan59/affordable-housing-tracker.git
+
 cd affordable-housing-tracker
-npm install
-🏃 Usage
 
-bash
+:: Create and activate virtual environment
 
+python -m venv venv
 
-1
-npm run dev
-Open ➝ http://localhost:3000
+venv\Scripts\activate
 
-📂 Folder Structure
+:: Install dependencies
 
+pip install -r requirements.txt
 
 
-1
-2
-3
-4
-5
-6
+:: Apply migrations
+
+python manage.py migrate
+
+
+:: (Optional) Create superuser for admin access
+
+python manage.py createsuperuser
+
+
+:: Start the development server
+
+python manage.py runserver
+
+
+:: Access the app in your browser:
+
+:: http://127.0.0.1:8000/
+
+:: Admin panel: http://127.0.0.1:8000/admin/
+
+
+
+🖼️ Media & Assets
+All housing images are stored in media/houses/
+
+Static files are managed via Django’s default configuration
+
+🛡️ Privacy & Local Deployment
+This project is designed with local-first principles—no external APIs or cloud dependencies. Ideal for internal use or secure deployment in resource-constrained environments.
+
+📌 Project Structure
+Code
 affordable-housing-tracker/
-├── client/            # React frontend
-├── server/            # Node.js + Express API
-├── public/            # Static assets
-├── .env.example       # Environment variables template
-└── README.md
-📌 Roadmap
+├── affordable_housing/       # Main Django app
+├── housing/                  # Housing listings logic
+├── media/houses/             # Uploaded images
+├── venv/                     # Virtual environment
+├── db.sqlite3                # Local database
+└── manage.py                 # Django CLI entrypoint
+👤 Author
+Made with ❤️ by Sudharshanmonith 🔗 GitHub Profile
 
-Feature A: Email notifications for new listings
-Feature B: Government subsidy eligibility calculator
-Mobile support
-API integration with HUD or local housing authorities
-✅ Tick these off as you go!
+📬 Contributing
+Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
 
-🤝 Contributing
-Contributions are what make the open-source community amazing.
-Feel free to:
-
-⭐ Star this repo
-🍴 Fork it
-🛠️ Submit a PR
-📜 License
-This project is licensed under MIT.
-
-<div align="center">
-🧑‍💻 Developed with ❤️ by Sudharshan
-</div>
+📄 License
+This project is open-source under the MIT License.
