@@ -1,4 +1,4 @@
-##🏠 Affordable Housing Tracker
+## 🏠 Affordable Housing Tracker
 
 A Django-powered web app to help users discover affordable housing options with ease. Built for transparency, accessibility, and real-world impact.
 ![sample image](./github_rent_house.jpg)  
@@ -33,20 +33,20 @@ A Django-powered web app to help users discover affordable housing options with 
 ##Create and activate virtual environment
 
 bash
-#1.python -m venv venv
+# 1.python -m venv venv
 source venv/bin/activate  # On Windows: venv\\Scripts\\activate
 Install dependencies
 
-bash
-#2.pip install -r requirements.txt
-#3.Run migrations
+
+# 2.pip install -r requirements.txt
+# 3.Run migrations
+
+
+# 4.python manage.py migrate
+# 5.Start the server
 
 bash
-#4.python manage.py migrate
-#5.Start the server
-
-bash
-#6.python manage.py runserver
+# 6.python manage.py runserver
 
 
 🖼️ Media & Assets
@@ -58,7 +58,7 @@ Static files are managed via Django’s default configuration
 This project is designed with local-first principles—no external APIs or cloud dependencies. Ideal for internal use or secure deployment in resource-constrained environments.
 
 
-Made with ❤️ by Sudharshanmonith 🔗 GitHub Profile
+# Made with ❤️ by Sudharshanmonith 🔗 GitHub Profile
 
 📬 Contributing
 Pull requests are welcome! For major changes, please open an issue first to discuss what you’d like to change.
